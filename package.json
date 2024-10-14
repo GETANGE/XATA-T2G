@@ -1,0 +1,32 @@
+{
+    "name": "socialmediamini",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node src/index.ts",
+        "dev": "nodemon src/index.ts",
+        "build": "npx tsc"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^5.0.0",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^22.7.4",
+        "express-validator": "7.2.0",
+        "morgan": "^1.10.0",
+        "nodemon": "^3.1.7",
+        "typescript": "^5.6.2"
+    },
+    "dependencies": {
+        "@xata.io/client": "0.0.0-next.v403cdd55cb26b69c074dbc07b44daa0c2a0a77b6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.0",
+        "ts-node": "^10.9.2"
+    }
+}

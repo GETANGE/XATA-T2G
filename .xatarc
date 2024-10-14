@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Getange-s-workspace-m5p7pc.us-east-1.xata.sh/db/News-Feed",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
