@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs7afeqaummr4an381p0",
+    "operations": [
+      {
+        "add_column": {
+          "table": "Posts",
+          "column": {
+            "pk": false,
+            "name": "imageUrl",
+            "type": "text",
+            "unique": false,
+            "comment": "",
+            "default": "'Null'",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs7afeqaummr4an381p0",
+  "parent": "mig_cs7ad72u8anorsmgfirg",
+  "schema": "public",
+  "startedAt": "2024-10-15T17:34:52.047944Z"
+}
