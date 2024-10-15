@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node src/index.ts",
-        "dev": "nodemon src/index.ts",
+        "start": "node App.ts",
+        "dev": "nodemon App.ts",
         "build": "npx tsc"
     },
     "keywords": [],
@@ -17,6 +17,7 @@
         "@types/express": "^5.0.0",
         "@types/morgan": "^1.9.9",
         "@types/node": "^22.7.4",
+        "@types/serve-static": "^1.15.7",
         "express-validator": "7.2.0",
         "morgan": "^1.10.0",
         "nodemon": "^3.1.7",
@@ -27,6 +28,7 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
         "express": "^4.21.0",
+        "server-static": "^2.0.5",
         "ts-node": "^10.9.2"
     }
 }
