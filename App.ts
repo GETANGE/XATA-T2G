@@ -1,8 +1,8 @@
 import express, { Express, Response, Request, NextFunction, ErrorRequestHandler } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import serveStatic from 'serve-static'
-import morgan from 'morgan'
+import serveStatic from 'serve-static';
+import morgan from 'morgan';
 
 dotenv.config();
 
@@ -22,30 +22,33 @@ app.use(cors());
 
 app.use(morgan('dev'));
 
-app.use(serveStatic('public/html', { 
-    index: ['landing.html', 'landing.htm'] 
-}))
+// Serve all static files from the 'public' directory
+app.use(serveStatic('public', { 
+    index: ['html/landing.html', 'html/landing.htm'] 
+}));
 
+// API routes
 app.use('/api/v1/post', postRoute);
 
-// handle undefined routes
-app.all('*', (req:Request, res:Response, next:NextFunction) => {
+// Catch-all route for undefined routes
+app.all('*', (req: Request, res: Response, next: NextFunction) => {
     return next(new AppError(`This route ${req.method} ${req.originalUrl} is not yet defined`, 401));
-})
+});
 
 // Global error handler
 interface error extends ErrorRequestHandler {
     statusCode: number;
     status: string;
-    message:string;
+    message: string;
 }
+
 app.use((err: error, req: Request, res: Response, next: NextFunction) => {
     const statusCode = err.statusCode || 500;
     const status = err.status || 'error';
 
     res.status(statusCode).json({
         status: status,
-        message: err.message || 'Internal Server Error'
+        message: err.message || 'Internal Server Error',
     });
 });
 
