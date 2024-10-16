@@ -13,7 +13,7 @@ body{
     justify-content:center;
     align-items: center;
     min-height: 100vh;
-    background: url('/images//\'Bright\ Light\ Shooting\ To\ Surface\ of\ Deep\ Blue\ Sea\ with\ Trail\ of\ Bubbles\'\ Photographic\ Print\ \ _\ Art_com.jpeg');
+    background: url('../images/\'Bright\ Light\ Shooting\ To\ Surface\ of\ Deep\ Blue\ Sea\ with\ Trail\ of\ Bubbles\'\ Photographic\ Print\ \ _\ Art_com.jpeg');
     /* background-size: cover; /* Ensures the image covers the whole background */
     background-position: center;
     background-repeat: no-repeat; 
@@ -97,13 +97,27 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;    
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .wrapper .form-box{
     width:100%;
     padding: 40px;
 }
+
+.wrapper .form-box.login{
+ /* display :none; */
+}
+
+.wrapper .form-box.register{
+    position:absolute;
+    transform:translateX(400px);
+    /* background-color: red; */
+}
+
+
+
+
 
 .wrapper .icon-close{
     position: absolute;
