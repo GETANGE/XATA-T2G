@@ -1,7 +1,6 @@
 import express, { Express, Response, Request, NextFunction, ErrorRequestHandler } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import serveStatic from 'serve-static';
 import morgan from 'morgan';
 
 dotenv.config();
@@ -22,10 +21,12 @@ app.use(cors());
 
 app.use(morgan('dev'));
 
-// Serve all static files from the 'public' directory
-app.use(serveStatic('public', { 
-    index: ['html/landing.html', 'html/landing.htm'] 
-}));
+app.use('/', (req:Request, res:Response) =>{
+    res.status(200).json({
+        status: 'success',
+        message: 'Welcome to the ask management API!',
+    });
+})
 
 // API routes
 app.use('/api/v1/post', postRoute);
