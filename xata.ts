@@ -154,8 +154,9 @@ export type DatabaseSchema = {
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL:
-    "https://Getange-s-workspace-m5p7pc.us-east-1.xata.sh/db/News-Feed",
+  databaseURL:process.env.DATABASE_URL,
+  apiKey:process.env.XATA_API_KEY,
+  branch: 'main'
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {
