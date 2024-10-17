@@ -4,7 +4,7 @@ import AppError from '../utils/AppError';
 
 const xata = getXataClient();
 
-// Get all posts from the database.
+// Get all projects from the database.
 export const getAllProject= async (req:Request, res:Response, next:NextFunction)=>{
     try {
         const projects = await xata.db.Project.getMany();

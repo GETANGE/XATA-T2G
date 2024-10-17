@@ -7,7 +7,8 @@ dotenv.config();
 
 const app: Express = express();
 
-import postRoute from "./routes/projectRoute";
+import projectRoute from "./routes/projectRoute";
+import usersRoute from "./routes/userRoute";
 import AppError from './utils/AppError';
 
 const port: number = parseInt(process.env.PORT as string, 10) || 7000;
@@ -21,15 +22,16 @@ app.use(cors());
 
 app.use(morgan('dev'));
 
-app.use('/', (req:Request, res:Response) =>{
+app.get('/', (req:Request, res:Response) =>{
     res.status(200).json({
         status: 'success',
-        message: 'Welcome to the ask management API!',
+        message: 'Welcome to the task management API!',
     });
 })
 
 // API routes
-app.use('/api/v1/post', postRoute);
+app.use('/api/v1/post', projectRoute);
+app.use('/api/v1/auth', usersRoute);
 
 // Catch-all route for undefined routes
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
