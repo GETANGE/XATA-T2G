@@ -7,7 +7,7 @@ dotenv.config();
 
 const app: Express = express();
 
-import postRoute from "./routes/postRoute";
+import postRoute from "./routes/projectRoute";
 import AppError from './utils/AppError';
 
 const port: number = parseInt(process.env.PORT as string, 10) || 7000;
