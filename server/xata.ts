@@ -430,6 +430,14 @@ const tables = [
         comment: "",
       },
       {
+        name: "role",
+        type: "multiple",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
         name: "xata_createdat",
         type: "datetime",
         notNull: true,
