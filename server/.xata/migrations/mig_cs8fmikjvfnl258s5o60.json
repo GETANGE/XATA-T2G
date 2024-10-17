@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs8fmikjvfnl258s5o60",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "Task",
+          "column": {
+            "pk": false,
+            "name": "Due date",
+            "type": "text",
+            "unique": false,
+            "comment": "",
+            "nullable": false
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs8fmikjvfnl258s5o60",
+  "parent": "mig_cs8fm1sjvfnl258s5o50",
+  "schema": "public",
+  "startedAt": "2024-10-17T11:55:54.77418Z"
+}

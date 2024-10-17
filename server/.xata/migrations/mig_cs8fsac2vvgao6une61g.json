@@ -1,0 +1,33 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs8fsac2vvgao6une61g",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "Teams",
+          "column": {
+            "pk": false,
+            "name": "adminId",
+            "type": "text",
+            "unique": false,
+            "comment": "{\"xata.link\":\"Users\"}",
+            "nullable": false,
+            "references": {
+              "name": "adminId_link",
+              "table": "Users",
+              "column": "xata_id",
+              "on_delete": "SET NULL"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs8fsac2vvgao6une61g",
+  "parent": "mig_cs8frts2vvgao6une60g",
+  "schema": "public",
+  "startedAt": "2024-10-17T12:08:09.741524Z"
+}

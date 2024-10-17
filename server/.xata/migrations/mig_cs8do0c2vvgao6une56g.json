@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs8do0c2vvgao6une56g",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "Team",
+          "column": {
+            "pk": false,
+            "name": "name",
+            "type": "text",
+            "unique": true,
+            "comment": "",
+            "nullable": false
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs8do0c2vvgao6une56g",
+  "parent": "mig_cs8dmfkjvfnl258s5n80",
+  "schema": "public",
+  "startedAt": "2024-10-17T09:42:25.769511Z"
+}
