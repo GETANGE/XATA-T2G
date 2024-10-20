@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs9okj72qe4a1a2lbs5g",
+    "operations": [
+      {
+        "drop_column": {
+          "down": "''",
+          "table": "Project",
+          "column": "teamId"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs9okj72qe4a1a2lbs5g",
+  "parent": "mig_cs9kqo72qe4a1a2lbr50",
+  "schema": "public",
+  "startedAt": "2024-10-19T10:30:37.203832Z"
+}

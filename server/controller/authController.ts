@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken'
-import { getXataClient } from '../xata';
+import { getXataClient } from './../src/xata';
 import AppError from '../utils/AppError';
+import { User, DecodedToken } from '../utils/types';
 import dotenv from 'dotenv'
 import bcrypt from 'bcrypt'
 
@@ -39,7 +40,7 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
             data: user
         });
     } catch (error) {
-        console.error(error);
+        console.log(error);
         return next(new AppError('Failed to create user', 500));
     }
 };
@@ -80,4 +81,52 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
         console.error(error);
         return next(new AppError('Failed to create user', 500));
     }
+};
+
+// protecting routes
+export const protect = async (req: any, res: Response, next: NextFunction) => {
+    try {
+        let token: string | undefined;
+
+        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+            token = req.headers.authorization.split(' ')[1];
+        }
+
+        if (!token) {
+            return next(new AppError('No token, authorization denied', 401));
+        }
+
+        // Custom promise for token verification
+        const decoded = await new Promise<DecodedToken>((resolve, reject) => {
+            jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve(decoded as DecodedToken);
+            });
+        });
+        console.log(decoded)
+
+        const currentUser = await xata.db.Users.read(decoded.id);
+
+        if (!currentUser) {
+            return next(new AppError('No user found', 404));
+        }
+
+        req.user = currentUser;
+        next();
+    } catch (error) {
+        console.error(error);
+        return next(new AppError('Headers authorization failed', 401));
+    }
+};
+
+// configurable middleware
+export const restrictTo = function(...roles: string[]) {
+    return (req: any, res: Response, next: NextFunction) => {
+        if (!req.user || !roles.includes(req.user.role!)) {
+            return next(new AppError('You do not have permission to access this route', 403));
+        }
+        next(); // Proceed to the next middleware
+    };
 };

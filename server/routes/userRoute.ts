@@ -1,13 +1,24 @@
 import express from 'express';
-import { getAllusers, getSingleUser } from '../controller/userController';
-import { createUser, loginUser } from '../controller/authController';
+import { 
+    getAllusers, 
+    getSingleUser, 
+    deleteUser 
+} from '../controller/userController';
+
+import { 
+    createUser, 
+    loginUser, 
+    restrictTo, 
+    protect 
+} from '../controller/authController';
 
 const router = express.Router();
 
-router.route('/users').get(getAllusers)
-router.route('/signup').post(createUser)
-router.route('/login').post(loginUser)
+router.get('/users', getAllusers)
+router.post('/register', createUser)
+router.post('/login', loginUser)
 
-router.route('/user/:id').get(getSingleUser)
+router.get('/users/:id', getSingleUser)
+router.delete('/delete/:id', protect, restrictTo('admin'), deleteUser);
 
 export default router;

@@ -1,0 +1,27 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs9t1972qe4a1a2lbtr0",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "Task",
+          "column": {
+            "pk": false,
+            "name": "status",
+            "type": "text",
+            "unique": false,
+            "comment": "",
+            "nullable": false
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs9t1972qe4a1a2lbtr0",
+  "parent": "mig_cs9t0vv2qe4a1a2lbtq0",
+  "schema": "public",
+  "startedAt": "2024-10-19T15:30:44.680061Z"
+}

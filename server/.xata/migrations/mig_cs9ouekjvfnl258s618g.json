@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs9ouekjvfnl258s618g",
+    "operations": [
+      {
+        "drop_column": {
+          "down": "''",
+          "table": "Team",
+          "column": "adminId"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs9ouekjvfnl258s618g",
+  "parent": "mig_cs9onk4jvfnl258s617g",
+  "schema": "public",
+  "startedAt": "2024-10-19T10:51:39.916263Z"
+}
