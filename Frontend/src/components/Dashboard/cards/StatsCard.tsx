@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { StatsCardProps } from '../../../types';
-=======
 import { StatsCardProps } from './../../../types';
->>>>>>> 9dbae3b35df5cfca4673d98da284ecce7bc79a1b
 
 const StatsCard = ({ title, value, Icon }: StatsCardProps) => (
   <div className="bg-white p-4 rounded-lg shadow-md">
