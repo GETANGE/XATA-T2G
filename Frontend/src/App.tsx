@@ -36,7 +36,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
        <LoginSignup/>
-//       <Dashboard/>
+       <Dashboard/>
       <TeamManagement teams={teams} setTeams={setTeams} />
     </div>
   );
