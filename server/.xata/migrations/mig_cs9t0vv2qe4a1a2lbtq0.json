@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs9t0vv2qe4a1a2lbtq0",
+    "operations": [
+      {
+        "drop_column": {
+          "down": "''",
+          "table": "Task",
+          "column": "status"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs9t0vv2qe4a1a2lbtq0",
+  "parent": "mig_cs9ouin2qe4a1a2lbsbg",
+  "schema": "public",
+  "startedAt": "2024-10-19T15:30:07.427858Z"
+}

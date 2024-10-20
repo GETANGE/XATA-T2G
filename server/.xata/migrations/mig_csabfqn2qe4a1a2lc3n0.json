@@ -1,0 +1,22 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csabfqn2qe4a1a2lc3n0",
+    "operations": [
+      {
+        "alter_column": {
+          "up": "\"role\"",
+          "down": "\"role\"",
+          "table": "Users",
+          "column": "role",
+          "nullable": true
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csabfqn2qe4a1a2lc3n0",
+  "parent": "mig_cs9t1972qe4a1a2lbtr0",
+  "schema": "public",
+  "startedAt": "2024-10-20T07:57:30.619455Z"
+}
