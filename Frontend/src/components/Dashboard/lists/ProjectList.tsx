@@ -18,6 +18,10 @@ const ProjectList = ({ projects }: ProjectListProps) => {
               <span className="font-medium">{project.name}</span>
               <p className="text-sm text-gray-500">{project.tasksCount} tasks</p>
             </div>
+            <div> 
+              <span className="font-medium"><span style={{color:'green'}}>Team leader </span>: {project.admin}</span>
+              <p className="text-sm text-gray-500">{project.description} tasks</p>
+            </div>
             <button 
               className="px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600"
               onClick={() => alert(`Viewing ${project.name}`)}

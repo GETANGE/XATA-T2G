@@ -18,6 +18,9 @@ const TaskList = ({ tasks }: TaskListProps) => {
               <h3 className="font-medium">{task.title}</h3>
               <p className="text-sm text-gray-500">Assigned to: {task.assignedTo}</p>
             </div>
+            <div>
+              <h3 className="font-medium"><span style={{color:'green'}}>Due date </span>: {task.dueDate}</h3>
+            </div>
             <span 
               className={`px-2 py-1 rounded-full text-sm ${
                 task.status === 'completed' 

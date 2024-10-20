@@ -1,0 +1,18 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs9ouin2qe4a1a2lbsbg",
+    "operations": [
+      {
+        "drop_table": {
+          "name": "Team"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs9ouin2qe4a1a2lbsbg",
+  "parent": "mig_cs9ouekjvfnl258s618g",
+  "schema": "public",
+  "startedAt": "2024-10-19T10:51:54.985997Z"
+}

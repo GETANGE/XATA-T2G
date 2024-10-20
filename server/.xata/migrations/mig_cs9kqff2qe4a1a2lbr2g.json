@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cs9kqff2qe4a1a2lbr2g",
+    "operations": [
+      {
+        "drop_column": {
+          "down": "''",
+          "table": "Users",
+          "column": "role"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cs9kqff2qe4a1a2lbr2g",
+  "parent": "mig_cs8mvcf2qe4a1a2lbilg",
+  "schema": "public",
+  "startedAt": "2024-10-19T06:10:06.120706Z"
+}
