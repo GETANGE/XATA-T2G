@@ -1,46 +1,46 @@
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { User, Calendar, ArrowLeft, Edit2, MessageSquare } from "lucide-react"; //removed Flag, from imports
+import { TaskDetail, Comment } from "../../../types";
 
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { User, Calendar,  ArrowLeft, Edit2, MessageSquare } from 'lucide-react';//removed Flag, from imports
-import { TaskDetail ,Comment } from '../../../types';
-
-
+// secondBest
 // Mock data for demonstration
 const mockTaskDetail: TaskDetail = {
-    id: 1,
-    title: 'Create login page',
-    description: 'Implement user authentication flow with login and registration forms.',
-    status: 'pending',
-    assignedTo: 'Kibe',
-    priority: 'high',
-    dueDate: '2024-12-31',
-    createdAt: '2024-10-20',
-    updatedAt: '2024-10-20',
-    comments: [
-        {
-            id: 1,
-            taskId: 1,
-            author: 'Sarah',
-            content: 'Should we add social login options?',
-            createdAt: '2024-10-20T10:00:00',
-        },
-        {
-            id: 2,
-            taskId: 1,
-            author: 'Mike',
-            content: 'I can help with the OAuth implementation.',
-            createdAt: '2024-10-20T11:30:00',
-        },
-    ],
-    projectId: 0,
-    xata_id: ''
+  id: 1,
+  title: "Create login page",
+  description:
+    "Implement user authentication flow with login and registration forms.",
+  status: "pending",
+  assignedTo: "Kibe",
+  priority: "high",
+  dueDate: "2024-12-31",
+  createdAt: "2024-10-20",
+  updatedAt: "2024-10-20",
+  comments: [
+    {
+      id: 1,
+      taskId: 1,
+      author: "Sarah",
+      content: "Should we add social login options?",
+      createdAt: "2024-10-20T10:00:00",
+    },
+    {
+      id: 2,
+      taskId: 1,
+      author: "Mike",
+      content: "I can help with the OAuth implementation.",
+      createdAt: "2024-10-20T11:30:00",
+    },
+  ],
+  projectId: 0,
+  xata_id: "",
 };
 
 const TaskDetails: React.FC = () => {
-  useParams<{ id: string; }>();
+  useParams<{ id: string }>();
   const [task, setTask] = useState<TaskDetail>(mockTaskDetail);
   const [isEditing, setIsEditing] = useState(false);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
   const [editedTask, setEditedTask] = useState(task);
 
   const handleSave = () => {
@@ -54,7 +54,7 @@ const TaskDetails: React.FC = () => {
     const comment: Comment = {
       id: task.comments.length + 1,
       taskId: task.id,
-      author: 'Current User',// get from auth context
+      author: "Current User", // get from auth context
       content: newComment,
       createdAt: new Date().toISOString(),
     };
@@ -63,25 +63,25 @@ const TaskDetails: React.FC = () => {
       ...task,
       comments: [...task.comments, comment],
     });
-    setNewComment('');
+    setNewComment("");
   };
 
-//   const getPriorityColor = (priority: string) => {
-//     switch (priority) {
-//       case 'high':
-//         return 'text-red-500';
-//       case 'medium':
-//         return 'text-yellow-500';
-//       default:
-//         return 'text-blue-500';
-//     }
-//   };
+  //   const getPriorityColor = (priority: string) => {
+  //     switch (priority) {
+  //       case 'high':
+  //         return 'text-red-500';
+  //       case 'medium':
+  //         return 'text-yellow-500';
+  //       default:
+  //         return 'text-blue-500';
+  //     }
+  //   };
 
   return (
     <div className="max-w-4xl mx-auto p-6">
       {/* Header */}
       <div className="mb-8">
-        <button 
+        <button
           onClick={() => window.history.back()}
           className="flex items-center text-gray-600 hover:text-gray-800 mb-4"
         >
@@ -95,7 +95,9 @@ const TaskDetails: React.FC = () => {
               <input
                 type="text"
                 value={editedTask.title}
-                onChange={(e) => setEditedTask({...editedTask, title: e.target.value})}
+                onChange={(e) =>
+                  setEditedTask({ ...editedTask, title: e.target.value })
+                }
                 className="text-2xl font-bold p-1 border rounded"
               />
             ) : (
@@ -103,11 +105,11 @@ const TaskDetails: React.FC = () => {
             )}
           </div>
           <button
-            onClick={() => isEditing ? handleSave() : setIsEditing(true)}
+            onClick={() => (isEditing ? handleSave() : setIsEditing(true))}
             className="flex items-center px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
           >
             <Edit2 className="w-4 h-4 mr-2" />
-            {isEditing ? 'Save Changes' : 'Edit Task'}
+            {isEditing ? "Save Changes" : "Edit Task"}
           </button>
         </div>
       </div>
@@ -117,11 +119,18 @@ const TaskDetails: React.FC = () => {
         <div className="p-6">
           <div className="grid grid-cols-2 gap-6 mb-6">
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-2">Status</label>
+              <label className="block text-sm font-medium text-gray-600 mb-2">
+                Status
+              </label>
               {isEditing ? (
                 <select
                   value={editedTask.status}
-                  onChange={(e) => setEditedTask({...editedTask, status: e.target.value as TaskDetail['status']})}
+                  onChange={(e) =>
+                    setEditedTask({
+                      ...editedTask,
+                      status: e.target.value as TaskDetail["status"],
+                    })
+                  }
                   className="w-full p-2 border rounded"
                 >
                   <option value="pending">Pending</option>
@@ -136,11 +145,15 @@ const TaskDetails: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-2">Assigned To</label>
+              <label className="block text-sm font-medium text-gray-600 mb-2">
+                Assigned To
+              </label>
               {isEditing ? (
                 <select
                   value={editedTask.assignedTo}
-                  onChange={(e) => setEditedTask({...editedTask, assignedTo: e.target.value})}
+                  onChange={(e) =>
+                    setEditedTask({ ...editedTask, assignedTo: e.target.value })
+                  }
                   className="w-full p-2 border rounded"
                 >
                   <option value="Kibe">Kibe</option>
@@ -177,12 +190,16 @@ const TaskDetails: React.FC = () => {
             </div> */}
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-2">Due Date</label>
+              <label className="block text-sm font-medium text-gray-600 mb-2">
+                Due Date
+              </label>
               {isEditing ? (
                 <input
                   type="date"
                   value={editedTask.dueDate}
-                  onChange={(e) => setEditedTask({...editedTask, dueDate: e.target.value})}
+                  onChange={(e) =>
+                    setEditedTask({ ...editedTask, dueDate: e.target.value })
+                  }
                   className="w-full p-2 border rounded"
                 />
               ) : (
@@ -195,11 +212,15 @@ const TaskDetails: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600 mb-2">Description</label>
+            <label className="block text-sm font-medium text-gray-600 mb-2">
+              Description
+            </label>
             {isEditing ? (
               <textarea
                 value={editedTask.description}
-                onChange={(e) => setEditedTask({...editedTask, description: e.target.value})}
+                onChange={(e) =>
+                  setEditedTask({ ...editedTask, description: e.target.value })
+                }
                 className="w-full p-2 border rounded min-h-[100px]"
               />
             ) : (

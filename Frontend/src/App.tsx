@@ -22,6 +22,7 @@ import React, { useState } from "react";
 import TeamManagement from "./components/Team-Management/TeamManagement"; 
 import Dashboard from './components/Dashboard/Dashboard';
 import { LoginSignup } from "./components/Login-Signup/LoginSignup";
+import TaskBoard from "./components/TaskBoard/pages/TaskBoard";
 import "./App.css"; 
 
 interface Team {
@@ -37,6 +38,7 @@ const App: React.FC = () => {
     <div className="App">
        <LoginSignup/>
        <Dashboard/>
+       <TaskBoard/>
       <TeamManagement teams={teams} setTeams={setTeams} />
     </div>
   );
