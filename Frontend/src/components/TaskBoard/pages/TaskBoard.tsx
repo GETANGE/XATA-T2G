@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Task } from '../../../types';
 import KanbanColumn from '../lists/KanbanColumn';
-import { mockTasks } from '../../../data/mockData';
+import mockTasks from '../../../data/mockData';
+//import mockTasks  from '../../../data/mockData';
 
 const TaskBoard: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(mockTasks);
@@ -30,36 +30,41 @@ const TaskBoard: React.FC = () => {
     tasks.filter(task => task.status === status);
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold">Task Board</h1>
-        <p className="text-gray-600">Drag and drop tasks to update their status</p>
+    <div className="h-screen bg-white">
+      {/* Header Section */}
+      <div className="py-6 px-8 border-b border-gray-200">
+        <h1 className="text-2xl font-bold text-gray-800">Task Board</h1>
+        <p className="text-gray-600 mt-1">Drag and drop tasks to update their status</p>
       </div>
-      <div className="flex gap-6 overflow-x-auto pb-4">
-        <KanbanColumn
-          title="Pending"
-          status="pending"
-          tasks={getTasksByStatus('pending')}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onDragStart={handleDragStart}
-        />
-        <KanbanColumn
-          title="In Progress"
-          status="inProgress"
-          tasks={getTasksByStatus('inProgress')}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onDragStart={handleDragStart}
-        />
-        <KanbanColumn
-          title="Completed"
-          status="completed"
-          tasks={getTasksByStatus('completed')}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onDragStart={handleDragStart}
-        />
+
+      {/* Board Section */}
+      <div className="px-8 py-6">
+        <div className="flex justify-center gap-6 h-full">
+          <KanbanColumn
+            title="Pending"
+            status="pending"
+            tasks={getTasksByStatus('pending')}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onDragStart={handleDragStart}
+          />
+          <KanbanColumn
+            title="In Progress"
+            status="inProgress"
+            tasks={getTasksByStatus('inProgress')}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onDragStart={handleDragStart}
+          />
+          <KanbanColumn
+            title="Completed"
+            status="completed"
+            tasks={getTasksByStatus('completed')}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onDragStart={handleDragStart}
+          />
+        </div>
       </div>
     </div>
   );
