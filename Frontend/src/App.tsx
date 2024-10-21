@@ -1,47 +1,18 @@
-// import Dashboard from './components/Dashboard/Dashboard';
-// // import {LoginSignup} from './components/Login-Signup/LoginSignup';
-
-// export const App = () => {
-//   return (
-//     <>
-//       {/* <LoginSignup/> */}
-//       <Dashboard/>
-
-//     </>
-    
-    
-//   )
-// }
-
-// export default App
-
-
-
-
-import React, { useState } from "react";
-import TeamManagement from "./components/Team-Management/TeamManagement"; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { LoginSignup } from './../src/components/Login-Signup/LoginSignup';
 import Dashboard from './components/Dashboard/Dashboard';
-import { LoginSignup } from "./components/Login-Signup/LoginSignup";
-import TaskBoard from "./components/TaskBoard/pages/TaskBoard";
-import "./App.css"; 
+import TaskBoard from './components/TaskBoard/pages/TaskBoard';
 
-interface Team {
-  id: number;
-  name: string;
-  members: string[];
-}
-
-const App: React.FC = () => {
-  const [teams, setTeams] = useState<Team[]>([]);
-
+function App() {
   return (
-    <div className="App">
-       <LoginSignup/>
-       <Dashboard/>
-       <TaskBoard/>
-      <TeamManagement teams={teams} setTeams={setTeams} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginSignup />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/team-dashboard" element={<TaskBoard />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;

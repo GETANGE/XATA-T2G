@@ -23,7 +23,7 @@ export interface Task {
   
   export interface StatsCardProps {
     title: string;
-    value: number;
+    value: number | any;
     Icon: React.ComponentType<any>;
   }
   export interface Comment {

@@ -1,0 +1,22 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csbaucv2qe4a1a2lcdig",
+    "operations": [
+      {
+        "drop_constraint": {
+          "up": "\"name\"",
+          "down": "\"name\"",
+          "name": "Project__pgroll_new_name_key",
+          "table": "Project",
+          "column": "name"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csbaucv2qe4a1a2lcdig",
+  "parent": "mig_csbahtv2qe4a1a2lcdg0",
+  "schema": "public",
+  "startedAt": "2024-10-21T19:44:51.771694Z"
+}

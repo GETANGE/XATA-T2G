@@ -6,15 +6,16 @@ import user_icon from '../../assets/person.png';
 import email_icon from '../../assets/email.png';
 import password_icon from '../../assets/password.png';
 import right_image from '../../assets/right-image.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginSignup = () => {
-  const [action, setAction] = useState('sign-up');
+  const [action, setAction] = useState('sign-up'); // Initial mode: sign-up
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [username, setUsername] = useState('');
+  const navigate = useNavigate();
 
-  // On component mount, retrieve data from localStorage if it exists
   useEffect(() => {
     const savedData = localStorage.getItem('userData');
     if (savedData) {
@@ -24,14 +25,17 @@ export const LoginSignup = () => {
       setPassword(password || '');
     }
 
-    // Check if token is saved in localStorage and log it for debugging
     const token = localStorage.getItem('token');
     if (token) {
-      console.log('User is already logged in with token');
+      const userRole = JSON.parse(localStorage.getItem('userData') || '{}').role;
+      if (userRole === 'admin') {
+        navigate('/Dashboard');
+      } else {
+        console.log('User is already logged in with token');
+      }
     }
-  }, []);
+  }, [navigate]);
 
-  // Perform input validation
   const validateForm = () => {
     if (action === 'sign-up') {
       if (!username || !email || !password || !passwordConfirm) {
@@ -51,7 +55,6 @@ export const LoginSignup = () => {
     return true;
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
@@ -65,26 +68,27 @@ export const LoginSignup = () => {
           : 'http://localhost:5000/api/v1/auth/login';
 
         const response = await axios.post(endpoint, userData, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
         });
 
         console.log('Response:', response.data);
 
-        // Extract token and user data from the response
         const { token, data } = response.data;
         if (token) {
-          // Save user data and token in localStorage
           localStorage.setItem('token', token);
           localStorage.setItem('userData', JSON.stringify({
             email: data.email,
             username: data.name,
             role: data.role,
           }));
+
+          if (data.role === 'admin') {
+            navigate('/Dashboard');
+          } else {
+            navigate('/team-dashboard');
+          }
         }
 
-        // Clear the form and switch action to 'Login' after successful sign-up
         setEmail('');
         setPassword('');
         setPasswordConfirm('');
@@ -100,7 +104,6 @@ export const LoginSignup = () => {
 
   return (
     <div className='login-signup-container'>
-      {/* Left Section: Form */}
       <div className='form-container'>
         <div className="header">
           <div className="text">{action === 'sign-up' ? 'Sign Up' : 'Login'}</div>
@@ -108,7 +111,6 @@ export const LoginSignup = () => {
         </div>
 
         <div className="inputs">
-          {/* Display username input only for Sign Up */}
           {action === 'sign-up' && (
             <div className="input">
               <img src={user_icon} alt="User" />
@@ -130,6 +132,7 @@ export const LoginSignup = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+
           <div className="input">
             <img src={password_icon} alt="Password" />
             <input
@@ -140,7 +143,6 @@ export const LoginSignup = () => {
             />
           </div>
 
-          {/* Confirm password input, only for Sign Up */}
           {action === 'sign-up' && (
             <div className="input">
               <img src={password_icon} alt="Confirm Password" />
@@ -154,7 +156,6 @@ export const LoginSignup = () => {
           )}
         </div>
 
-        {/* Display forgot password only for Login */}
         {action === 'Login' && (
           <div className="forgot-password">
             Forgot Password? <span>Click Here!</span>
@@ -162,31 +163,17 @@ export const LoginSignup = () => {
         )}
 
         <div className="submit-container">
-          {/* Sign Up button */}
-          <button
-            className={action === 'sign-up' ? 'submit' : 'submit gray'}
-            onClick={(e) => {
-              setAction('sign-up'); // Change action
-              setTimeout(() => handleSubmit(e), 0); // Handle form submission after action is updated
-            }}
-          >
-            Sign Up
+          <button className="submit" onClick={handleSubmit}>
+            {action === 'sign-up' ? 'Sign Up' : 'Login'}
           </button>
 
-          {/* Login button */}
-          <button
-            className={action === 'Login' ? 'submit' : 'submit gray'}
-            onClick={(e) => {
-              setAction('Login'); // Change action
-              setTimeout(() => handleSubmit(e), 0); // Handle form submission after action is updated
-            }}
-          >
-            Login
+          {/* Button to toggle between Sign Up and Login */}
+          <button className="toggle-action" onClick={() => setAction(action === 'sign-up' ? 'Login' : 'sign-up')}>
+            {action === 'sign-up' ? 'Switch to Login' : 'Switch to Sign Up'}
           </button>
         </div>
       </div>
 
-      {/* Right Section: Image */}
       <div className='image-container'>
         <img src={right_image} alt="Right Section" />
       </div>

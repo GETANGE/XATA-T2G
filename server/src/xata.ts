@@ -27,14 +27,6 @@ const tables = [
     },
     primaryKey: [],
     uniqueConstraints: {
-      Project__pgroll_new_adminId_key: {
-        name: "Project__pgroll_new_adminId_key",
-        columns: ["adminId"],
-      },
-      Project__pgroll_new_name_key: {
-        name: "Project__pgroll_new_name_key",
-        columns: ["name"],
-      },
       _pgroll_new_Project_xata_id_key: {
         name: "_pgroll_new_Project_xata_id_key",
         columns: ["xata_id"],
@@ -46,7 +38,7 @@ const tables = [
         type: "link",
         link: { table: "Teams" },
         notNull: true,
-        unique: true,
+        unique: false,
         defaultValue: null,
         comment: '{"xata.link":"Teams"}',
       },
@@ -54,7 +46,7 @@ const tables = [
         name: "name",
         type: "text",
         notNull: true,
-        unique: true,
+        unique: false,
         defaultValue: null,
         comment: "",
       },
