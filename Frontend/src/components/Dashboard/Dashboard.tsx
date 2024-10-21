@@ -61,7 +61,7 @@ const Dashboard = () => {
           id: project.xata_id,
           name: project.name,
           tasksCount: response.data.results,
-          admin: project.adminId.adminId.name,
+          adminId: project.adminId.adminId.name,
           description: project.adminId.description,
         }));
         setProjects(fetchedProjects);
@@ -95,7 +95,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <StatsCard title="Total Tasks" value={tasks.length} Icon={ListTodo} />
         <StatsCard title="Total Projects" value={projects.length} Icon={Folder} />
-        <StatsCard title="Team Members" value={teams.length} Icon={Users} />
+        <StatsCard title="Total Teams" value={teams} Icon={Users} />
 
       </div>
 

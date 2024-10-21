@@ -17,6 +17,6 @@ router
 router
     .route('/:id')
         .get(getSingleTask)
-        .patch(protect,restrictTo('admin','leader'),updateTask)
+        .patch(protect,updateTask)
         .delete(protect,restrictTo('admin','leader'),deleteTask);
 export default router;

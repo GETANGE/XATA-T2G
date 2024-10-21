@@ -1,0 +1,22 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csbahtv2qe4a1a2lcdg0",
+    "operations": [
+      {
+        "drop_constraint": {
+          "up": "\"adminId\"",
+          "down": "\"adminId\"",
+          "name": "Project__pgroll_new_adminId_key",
+          "table": "Project",
+          "column": "adminId"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csbahtv2qe4a1a2lcdg0",
+  "parent": "mig_csabfqn2qe4a1a2lc3n0",
+  "schema": "public",
+  "startedAt": "2024-10-21T19:18:15.484498Z"
+}

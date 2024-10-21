@@ -19,7 +19,7 @@ const ProjectList = ({ projects }: ProjectListProps) => {
               <p className="text-sm text-gray-500">{project.tasksCount} tasks</p>
             </div>
             <div> 
-              <span className="font-medium"><span style={{color:'green'}}>Team leader </span>: {project.admin}</span>
+              <span className="font-medium"><span style={{color:'green'}}>Team leader </span>: {project.adminId}</span>
               <p className="text-sm text-gray-500">{project.description} tasks</p>
             </div>
             <button 
