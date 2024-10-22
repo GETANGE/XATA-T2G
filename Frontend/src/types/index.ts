@@ -60,3 +60,9 @@ export interface Task {
     updatedAt: string;
     id: number;
   }
+
+  export interface User{
+    name: string;
+    role: string;
+    xataId:string;
+  }
