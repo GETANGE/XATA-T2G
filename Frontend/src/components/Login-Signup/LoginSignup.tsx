@@ -19,10 +19,14 @@ export const LoginSignup = () => {
   useEffect(() => {
     const savedData = localStorage.getItem('userData');
     if (savedData) {
-      const { email, username, password } = JSON.parse(savedData);
-      setEmail(email || '');
-      setUsername(username || '');
-      setPassword(password || '');
+      try {
+        const { email, username, password } = JSON.parse(savedData);
+        setEmail(email || '');
+        setUsername(username || '');
+        setPassword(password || '');
+      } catch (err) {
+        console.error("Failed to parse user data:", err);
+      }
     }
 
     const token = localStorage.getItem('token');
@@ -77,6 +81,7 @@ export const LoginSignup = () => {
         if (token) {
           localStorage.setItem('token', token);
           localStorage.setItem('userData', JSON.stringify({
+            id: data.xata_id,
             email: data.email,
             username: data.name,
             role: data.role,
@@ -96,7 +101,9 @@ export const LoginSignup = () => {
         setAction('Login');
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          console.log('Axios Error:', error);
+          console.error('Axios Error:', error.response?.data?.message || error.message);
+        } else {
+          console.error('Unknown Error:', error);
         }
       }
     }

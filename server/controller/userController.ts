@@ -94,3 +94,7 @@ export const deleteUser = async (req: any, res: Response, next: NextFunction) =>
         return next(new AppError('Error deleting user', 500));
     }
 };
+
+// deleting user Account
+
+// activating user Account

@@ -1,0 +1,22 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_csbpc0kjvfnl258s6hlg",
+    "operations": [
+      {
+        "drop_constraint": {
+          "up": "\"name\"",
+          "down": "\"name\"",
+          "name": "Teams__pgroll_new_name_key",
+          "table": "Teams",
+          "column": "name"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_csbpc0kjvfnl258s6hlg",
+  "parent": "mig_csbaucv2qe4a1a2lcdig",
+  "schema": "public",
+  "startedAt": "2024-10-22T12:09:38.529645Z"
+}
