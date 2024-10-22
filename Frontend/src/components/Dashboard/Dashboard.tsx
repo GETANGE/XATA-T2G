@@ -10,6 +10,8 @@ import {Task} from '../../types/index'
 import { Project } from '../../types';
 import Teams from './lists/Teams';
 import CreateProject from './lists/CreateProject';
+import UsersList from './lists/UsersList';
+import { mockUsers } from '../../data/mockUsers';
 
 // Dialog Component 
 const Dialog = ({ open, onOpenChange, children }: { 
@@ -205,9 +207,12 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Users List */}
-      <div className= "w-4/12 h-screen">
+      {/* <div className= "w-4/12 h-screen">
         <StatsCard title={'Users'} value={undefined} Icon={Users}/>
-      </div>
+      </div> */}
+      <div className= "w-3/12 h-3/6 mt-28">
+    <UsersList users={mockUsers}/>
+  </div>
 
       {/* Popups */}
       <Dialog open={activePopup !== null} onOpenChange={(open) => !open && setActivePopup(null)}>
