@@ -10,6 +10,7 @@ export interface Task {
     dueDate: string;
     projectId:number;
     xata_id: string;
+    
   }
   
   export interface Project {
