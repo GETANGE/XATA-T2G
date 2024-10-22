@@ -20,7 +20,7 @@ const KanbanColumn: React.FC<ColumnProps> = ({
   onDragStart,
 }) => {
   return (
-    <div className="flex-1 min-w-[100px] max-w-[400px] bg-gray-100 rounded-1g">
+    <div className="flex-1 min-w-[300px] max-w-[400px] bg-gray-100 rounded-1g">
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <h2 className="font-bold text-gray-700">{title}</h2>

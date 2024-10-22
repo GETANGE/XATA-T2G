@@ -213,10 +213,6 @@ const tables = [
     },
     primaryKey: [],
     uniqueConstraints: {
-      Teams__pgroll_new_name_key: {
-        name: "Teams__pgroll_new_name_key",
-        columns: ["name"],
-      },
       _pgroll_new_Teams_xata_id_key: {
         name: "_pgroll_new_Teams_xata_id_key",
         columns: ["xata_id"],
@@ -244,7 +240,7 @@ const tables = [
         name: "name",
         type: "text",
         notNull: true,
-        unique: true,
+        unique: false,
         defaultValue: null,
         comment: "",
       },

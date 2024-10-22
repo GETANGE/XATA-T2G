@@ -1,4 +1,5 @@
-import { ListTodo, Users, Folder, Settings, LogOut, Plus } from 'lucide-react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ListTodo, Users, Folder, Settings, LogOut } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Header from './layout/Header';
 import StatsCard from './cards/StatsCard';
@@ -9,23 +10,6 @@ import {Task} from '../../types/index'
 import { Project } from '../../types';
 import Teams from './lists/Teams';
 import CreateProject from './lists/CreateProject';
-
-// Type definitions
-// interface Task {
-//   id: string;
-//   title: string;
-//   status: string;
-//   assignedTo: string;
-//   dueDate: string;
-// }
-
-// interface Project {
-//   id: string;
-//   name: string;
-//   tasksCount: number;
-//   adminId: string;
-//   description: string;
-// }
 
 // Dialog Component 
 const Dialog = ({ open, onOpenChange, children }: { 

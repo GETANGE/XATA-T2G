@@ -15,7 +15,7 @@ const router = express.Router();
 router
     .route('/')
         .get(getAllTeams)
-        .post(protect,restrictTo('admin', 'leader'),createTeam);
+        .post(createTeam);
 
 router
     .route('/:id')
