@@ -3,11 +3,26 @@ import React, { useState } from 'react';
 const CreateTeamForm: React.FC = () => {
   const [teamName, setTeamName] = useState('');
   const [description, setDescription] = useState('');
-  const [userId, setUserId] = useState('');
+  const [userIds, setUserIds] = useState<string[]>(['']); // Initially one userId field
+
+  const handleUserIdChange = (index: number, value: string) => {
+    const updatedUserIds = [...userIds];
+    updatedUserIds[index] = value;
+    setUserIds(updatedUserIds);
+  };
+
+  const addUserIdField = () => {
+    setUserIds([...userIds, '']); // Add a new empty userId input field
+  };
+
+  const removeUserIdField = (index: number) => {
+    const updatedUserIds = userIds.filter((_, i) => i !== index);
+    setUserIds(updatedUserIds);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ teamName, description, userId });
+    console.log({ teamName, description, userIds });
     // Handle form submission logic here
   };
 
@@ -42,17 +57,37 @@ const CreateTeamForm: React.FC = () => {
             />
           </div>
 
-          {/* User ID Field */}
+          {/* Dynamic User ID Fields */}
           <div>
-            <label className="block text-sm font-medium text-gray-600">User ID</label>
-            <input
-              type="text"
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter user ID"
-              required
-            />
+            <label className="block text-sm font-medium text-gray-600">User IDs</label>
+            {userIds.map((userId, index) => (
+              <div key={index} className="flex items-center mt-2">
+                <input
+                  type="text"
+                  value={userId}
+                  onChange={(e) => handleUserIdChange(index, e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder={`Enter user ID #${index + 1}`}
+                  required
+                />
+                {userIds.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeUserIdField(index)}
+                    className="ml-2 text-red-500 hover:text-red-700 focus:outline-none"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addUserIdField}
+              className="mt-2 text-blue-500 hover:text-blue-700 focus:outline-none"
+            >
+              + Add another user ID
+            </button>
           </div>
 
           {/* Submit Button */}
