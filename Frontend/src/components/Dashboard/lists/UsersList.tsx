@@ -4,6 +4,8 @@ import { User } from '../../../types';
 import StatsCard from '../cards/StatsCard';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import React from 'react';
 
 
 const userUrl = 'http://localhost:5000/api/v1/auth/users'
@@ -27,7 +29,8 @@ const UserList = () => {
     fetchUsers();
   }, []);
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-8">
+    <div className="bg-white rounded-lg shadow-md p-4 mb-8 ">
+      <Toaster position="top-right"></Toaster>
         <div className="mb-1 ">
         <StatsCard title="Users" value={userss.length} Icon={Users} />
         </div>
@@ -46,6 +49,12 @@ const UserList = () => {
                 <p className="text-sm text-gray-500">Role: {user.role}</p>
               </div>
               <span className="text-sm text-gray-400">UniqueID: {user.xata_id}</span>
+              <button 
+              className="px-3 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600"
+              onClick={() => toast(`Deleting ${user.name}`)}
+            >
+              Delete
+            </button>
             </div>
           ))
         )}

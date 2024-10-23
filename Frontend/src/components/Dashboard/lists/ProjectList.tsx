@@ -1,3 +1,4 @@
+import toast, { Toaster } from 'react-hot-toast';
 import { Project } from '../../../types';
 
 interface ProjectListProps {
@@ -7,6 +8,7 @@ interface ProjectListProps {
 const ProjectList = ({ projects }: ProjectListProps) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
+      <Toaster position="top-right"></Toaster>
       <h2 className="text-xl font-bold mb-4">Projects</h2>
       <div className="space-y-4">
         {projects.map(project => (
@@ -24,7 +26,7 @@ const ProjectList = ({ projects }: ProjectListProps) => {
             </div>
             <button 
               className="px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600"
-              onClick={() => alert(`Viewing ${project.name}`)}
+              onClick={() => toast(`Viewing ${project.name}`)}
             >
               View
             </button>
