@@ -62,6 +62,7 @@ export interface Task {
   }
 
   export interface User{
+    xata_id: ReactNode;
     name: string;
     role: string;
     xataId:string;
