@@ -11,7 +11,6 @@ import { Project } from '../../types';
 import Teams from './lists/Teams';
 import CreateProject from './lists/CreateProject';
 import UsersList from './lists/UsersList';
-import { mockUsers } from '../../data/mockUsers';
 
 // Dialog Component 
 const Dialog = ({ open, onOpenChange, children }: { 
@@ -140,7 +139,7 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-lg">
+      <div className="w-2/12 bg-white shadow-lg">
         <div className="flex flex-col h-full">
           <div className="p-4">
             <h2 className="text-xl font-bold mb-8">Dashboard</h2>
@@ -192,7 +191,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="w-8/12 ">
+      <div className="w-7/12 ">
         <div className="max-w-6xl mx-auto p-4">
           <Header />
           
@@ -211,7 +210,7 @@ const Dashboard = () => {
         <StatsCard title={'Users'} value={undefined} Icon={Users}/>
       </div> */}
       <div className= "w-3/12 h-3/6 mt-28">
-    <UsersList users={mockUsers}/>
+    <UsersList/>
   </div>
 
       {/* Popups */}
