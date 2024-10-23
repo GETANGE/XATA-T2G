@@ -137,9 +137,9 @@ const Dashboard = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 ">
       {/* Sidebar */}
-      <div className="w-2/12 bg-white shadow-lg">
+      <div className="w-2/12 h-full bg-white fixed shadow-lg">
         <div className="flex flex-col h-full">
           <div className="p-4">
             <h2 className="text-xl font-bold mb-8">Dashboard</h2>
@@ -191,7 +191,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="w-7/12 ">
+      <div className="w-7/12 ml-80">
         <div className="max-w-6xl mx-auto p-4">
           <Header />
           
