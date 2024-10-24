@@ -5,6 +5,9 @@ import type {
   SchemaInference,
   XataRecord,
 } from "@xata.io/client";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const tables = [
   {

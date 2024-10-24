@@ -2,6 +2,7 @@ import express, { Express, Response, Request, NextFunction, ErrorRequestHandler 
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import { setUpcronJobs } from './utils/cronJob'
 import { createClient, RedisClientType } from 'redis';
 
 dotenv.config();
@@ -52,7 +53,6 @@ const redisClient: RedisClientType = createClient();
     }
 })();
 
-
 app.get('/', (req:Request, res:Response) =>{
     res.status(200).json({
         status: 'success',
@@ -89,6 +89,8 @@ app.use((err: error, req: Request, res: Response, next: NextFunction) => {
     });
 });
 
+// calling the cron jobs
+setUpcronJobs()
 export default redisClient; 
 
 app.listen(port, host, () => { 
